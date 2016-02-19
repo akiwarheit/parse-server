@@ -127,6 +127,10 @@ function getQueryCondition(req) {
  * @param {Object} request A request object
  */
 function validateMasterKey(req) {
+  // We need not validate if we're allowing client push
+  if (req.config.allowClientPush)
+    return;
+
   if (req.info.masterKey !== req.config.masterKey) {
     throw new Parse.Error(Parse.Error.PUSH_MISCONFIGURED,
                           'Master key is invalid, you should only use master key to send push');

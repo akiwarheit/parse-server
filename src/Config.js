@@ -25,6 +25,9 @@ function Config(applicationId, mount) {
   this.database = DatabaseAdapter.getDatabaseConnection(applicationId);
   this.filesController = cacheInfo.filesController;
 
+  // Flag to determine if we allow client push
+  this.allowClientPush = cacheInfo.allowClientPush || false;
+
   this.oauth = cacheInfo.oauth;
   this.mount = mount;
 }
